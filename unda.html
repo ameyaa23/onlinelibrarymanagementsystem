@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management System - Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.euroschoolindia.com/blogs/wp-content/webp-express/webp-images/uploads/2023/06/ways-to-encourage-reading-habits.jpg.webp');
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <div class="login-options">
+                <button class="login-button" onclick="location.href='user.html';">User Login</button>
+                <button class="login-button" onclick="location.href='admin.html';">Admin Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

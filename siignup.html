@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Library Management System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Center the form horizontally and vertically and set the background image */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://sfgoodwill.org/wp-content/uploads/2020/08/Books-and-laptop-.jpg'); /* Update the image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .signup-form {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Add 1cm margin between form elements */
+        .signup-form label, .signup-form input {
+            margin-bottom: 10mm; /* 1cm or 10mm of spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-form">
+        <h1>Sign Up</h1>
+        <form method="post" action="show.php">
+            <label for="user_name">User Name:</label>
+            <input type="text" name="user_name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="text" name="email" required><br>
+
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" name="phone_number" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" name="confirm_password" required><br>
+
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</body>
+</html>

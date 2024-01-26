@@ -1,0 +1,87 @@
+<!-- updatebooks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Books - Library Management System</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            margin: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 8px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Library Management System - Update Books</h1>
+    </header>
+    <main>
+        <form method="POST" action="update_books.php">
+            <label for="bookId">Book ID:</label>
+            <input type="text" id="bookId" name="bookId" required>
+            
+            <label for="bookName">Book Name:</label>
+            <input type="text" id="bookName" name="bookName" required>
+            
+            <label for="authorName">Author Name:</label>
+            <input type="text" id="authorName" name="authorName" required>
+            
+            <!-- Add other fields as needed -->
+
+            <button type="submit">Update Book</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!-- index.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Books - Library Management System</title>
+    <style>
+        /* Add CSS styles for book listings */
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .book {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+        }
+        .book img {
+            max-width: 100%;
+            height: auto;
+        }
+        .cart {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Books</h1>
+    <div class="book-list">
+        <?php
+        include 'connection.php';
+
+        // Query to fetch book data
+        $query = "SELECT * FROM books";
+        $result = $connect->query($query);
+
+        // Check if there are rows in the result
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='book'>
+                        <img src='{$row['image']}' alt='{$row['title']}'>
+                        <h3>{$row['title']}</h3>
+                        <p>Author: {$row['author']}</p>
+                        <p>RENT: {$row['rent']}</p>
+                        <p>DUE DATE: {$row['due_date']}</p>
+                        <select class='select-book'>
+                            <option value=''>Select</option>
+                            <option value='{$row['title']}'>Add to Cart</option>
+                        </select>
+                      </div>";
+            }
+        } else {
+            echo "<p>No books available</p>";
+        }
+
+        // Close the database connection
+        $connect->close();
+        ?>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-list"></ul>
+        <button id="buy-now-button">Buy Now</button>
+    </div>
+
+    <script>
+        // JavaScript to handle book selection, cart, and Buy Now button
+        const selectElements = document.querySelectorAll('.select-book');
+        const cartList = document.getElementById('cart-list');
+        const buyNowButton = document.getElementById('buy-now-button');
+
+        selectElements.forEach((select, index) => {
+            select.addEventListener('change', (event) => {
+                const selectedOption = event.target.value;
+                if (selectedOption === `Book ${index + 1}`) {
+                    // Add the book to the cart
+                    const bookTitle = document.querySelectorAll('h3')[index].textContent;
+                    const cartItem = document.createElement('li');
+                    cartItem.textContent = bookTitle;
+
+                    // Add a "Delete" button for each book in the cart
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', () => {
+                        cartList.removeChild(cartItem);
+                    });
+
+                    // Append the delete button to the cart item
+                    cartItem.appendChild(deleteButton);
+                    cartList.appendChild(cartItem);
+
+                    select.selectedIndex = 0; // Reset the select option
+                }
+            });
+        });
+        buyNowButton.addEventListener('click', () => {
+            // Redirect to the payment page
+            window.location.href = 'http://127.0.0.1/library/paymnt.html';
+        });
+    </script>
+</body>
+</html>
